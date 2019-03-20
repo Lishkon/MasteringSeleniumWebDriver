@@ -9,13 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 
-public class BasicTest {
+public class BasicTestWD extends DriverFactory{
 
-    private void googleExampleThatSearchesFor(final String searchString) {
+    private void googleExampleThatSearchesFor(final String searchString) throws Exception {
 
-        WebDriver driver = new FirefoxDriver();
-
-        driver.get("http://www.google.com");
+        WebDriver driver = DriverFactory.getDriver();
+        driver.get("https://google.com");
 
         WebElement searchField = driver.findElement(By.name("q"));
 
@@ -33,16 +32,16 @@ public class BasicTest {
 
         System.out.println("Page title is: " + driver.getTitle());
 
-        driver.quit();
     }
 
+
     @Test
-    public void googleCheeseExample() {
+    public void googleCheeseExample() throws Exception{
         googleExampleThatSearchesFor("Cheese!");
     }
 
     @Test
-    public void googleMilkExample() {
+    public void googleMilkExample() throws Exception{
         googleExampleThatSearchesFor("Milk!");
     }
 }
